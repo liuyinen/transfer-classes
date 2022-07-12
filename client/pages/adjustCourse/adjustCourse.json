@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "pickerYMDHM":"../../component/pickerYMDHM/pickerYMDHM"
+  },
+  "navigationBarTitleText": "调课申请",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#09c063"
+}

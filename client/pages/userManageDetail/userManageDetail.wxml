@@ -1,0 +1,79 @@
+<!--pages/userManageDetail/userManageDetail.wxml-->
+<form bindsubmit="confirmUser">
+  <view class="header-box">
+    <image class="avatar" src="{{ userData.avatar }}" mode="aspectFill"></image>
+    <text class="nick">{{ userData.username }}</text>
+  </view>
+  <view class="user-info">
+    <view class="form-item">
+      <text class="form-item-title">1.教师工号：</text>
+      <text class="form-item-content">{{userData.job_number}}</text>
+    </view>
+    <view class="form-item">
+      <text class="form-item-title">2.微信昵称：</text>
+      <text class="form-item-content">{{userData.nickname}}</text>
+    </view>
+    <view class="form-item">
+      <text class="form-item-title" decode="true">3.性&emsp;&emsp;别：</text>
+      <text class="form-item-content">{{userData.gender == 1 ? "男" : "女"}}</text>
+    </view>
+    <view class="form-item">
+      <text class="form-item-title">4.手机号码：</text>
+      <text class="form-item-content">{{userData.telephone}}</text>
+    </view>
+    <view class="form-item">
+      <text class="form-item-title">5.创建时间：</text>
+      <text class="form-item-content">{{userData.create_time}}</text>
+    </view>
+    <block wx:if="{{identify==0}}">
+      <view class="form-item form-column">
+        <view class="form-item-title form-item-bottom">6.用户角色</view>
+        <radio-group class="radio-group" name="role">
+          <radio class="radio" wx:for-items="{{roleItems}}" wx:key="name" value="{{item.name}}"
+            checked="{{item.checked}}">
+            <text>{{item.value}}</text>
+          </radio>
+        </radio-group>
+      </view>
+      <view class="form-item form-column">
+        <view class="form-item-title form-item-bottom">7.是否认证</view>
+        <radio-group class="radio-group" name="identify" bindchange='radiochange'>
+          <radio class="radio" wx:for-items="{{identifyItems}}" wx:key="name" value="{{item.name}}"
+            checked="{{item.checked}}">
+            <text>{{item.value}}</text>
+          </radio>
+        </radio-group>
+      </view>
+      <view class="form-item form-column" wx:if="{{statusRadio == '拒绝'}}">
+        <view class="form-item-title form-item-bottom"><text class="star" decode="true">*&nbsp;</text>8.拒绝认证原因</view>
+        <textarea class="bottom-textarea" name="refuseRemarks" placeholder-style="color:#696969;font-weight:normal;"
+          style="height: 3em" placeholder="请输入拒绝认证原因" />
+      </view>
+    </block>
+    <block wx:if="{{identify==1||identify==2}}">
+      <view class="form-item">
+        <text class="form-item-title">6.用户角色：</text>
+        <text class="form-item-content">{{roleId == 1 ? "总管理员" : (roleId == 2 ? "普通管理员" : "教师")}}</text>
+      </view>
+      <view class="form-item">
+        <text class="form-item-title">7.认证结果：</text>
+        <text class="form-item-content cer success-cer" wx:if="{{identify == 1}}">已认证</text>
+        <text class="form-item-content cer fail-cer" wx:if="{{identify == 2}}">认证失败</text>
+      </view>
+      <view class="form-item" wx:if="{{identify == 2}}">
+        <text class="form-item-title">8.拒绝认证原因：</text>
+        <text class="form-item-content">{{refuseReason}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="close-page">
+    <view class="btn close-btn" bindtap="navigateBack">
+      <image class="close-btn-img" src="../../images/close.png" mode="aspectFit"></image>
+      <button class="btn-txt">关闭</button>
+    </view>
+    <view class="btn confirm-btn" wx:if="{{identify==0}}">
+      <image class="close-btn-img" src="../../images/confirm.png" mode="aspectFit"></image>
+      <button class="btn-txt" form-type="submit">确认</button>
+    </view>
+  </view>
+</form>

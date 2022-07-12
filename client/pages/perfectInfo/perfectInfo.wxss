@@ -1,0 +1,63 @@
+/* pages/perfectInfo/perfectInfo.wxss */
+view {
+  font-size: 32rpx;
+}
+
+.star {
+  color: #e15a3d;
+  font-size: 34rpx;
+}
+
+.perfect-info {
+  display: block;
+  margin: 0 45rpx;
+}
+
+.btn .save-btn {
+  width: 100%;
+  margin-top: 88rpx;
+  border-radius: 6rpx;
+  color: #ffffff;
+  background-color: #09c063;
+  font-weight: normal;
+  font-size: 32rpx;
+}
+
+.form-item {
+  position: relative;
+  display: flex;
+  padding: 35rpx 0;
+}
+
+.form-item .picker {
+  width: 100%;
+}
+
+.form-item .item-lable {
+  width: 30%;
+}
+
+.form-item .item-text {
+  text-align: right;
+  color: #999;
+  position: absolute;
+  right: 0px;
+  font-weight: normal;
+}
+
+.div-line {
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.item-mobile {
+  width: 180rpx !important;
+  height: 60rpx;
+  font-size: 24rpx;
+  padding: 10rpx;
+  position: absolute;
+  right: 0px;
+  color: #ffffff !important;
+  text-align: center !important;
+  background-color: #09c063;
+  line-height: 40rpx;
+}

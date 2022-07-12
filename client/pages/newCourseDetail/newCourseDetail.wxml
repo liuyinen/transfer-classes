@@ -1,0 +1,44 @@
+<!--pages/newCourseDetail/newCourseDetail.wxml-->
+<view class="page">
+  <view class="form-item">
+    <view class="item-lable">上课时间</view>
+    <input class="item-text" name="date" placeholder="{{courseData.date}}" disabled="disabled" />
+  </view>
+  <view class="form-item">
+    <view class="item-lable">上课节次</view>
+    <input class="item-text" name="section" placeholder="{{sectionArray[courseData.section]}}" disabled="disabled" />
+  </view>
+  <view class="div-line"></view>
+  <view class="form-item">
+    <view class="item-lable">上课班级</view>
+    <input class="item-text" name="class" placeholder="{{courseData.grade}}{{courseData.gclass}}班"
+      disabled="disabled" />
+  </view>
+  <view class="div-line"></view>
+  <view class="form-item">
+    <view class="item-lable">原上课教师</view>
+    <input class="item-text" name="username" placeholder="{{courseData.username}}" disabled="disabled" />
+  </view>
+  <view class="div-line"></view>
+  <view class="form-item form-item-other">
+    <view class="item-lable">调课原因</view>
+    <textarea class="bottom-textarea" name="remarks" style="height: 3em" placeholder="{{courseData.reason}}"
+      placeholder-style="color:#696969;font-weight:normal;" disabled="disabled" />
+  </view>
+  <view class="div-line"></view>
+  <view class="form-item">
+    <view class="item-lable other-lable">调整时间</view>
+    <input class="item-text" name="adjustTIme" placeholder="{{courseData.adjust_time}}" disabled="disabled" />
+  </view>
+  <view class="div-line"></view>
+  <view class="form-item">
+    <view class="item-lable other-lable">调整节次</view>
+    <input class="item-text" name="section" placeholder="{{sectionArray[courseData.adjust_section]}}" disabled="disabled" />
+  </view>
+</view>
+<view class="close-page">
+  <view class="btn close-btn" bindtap="navigateBack">
+    <image class="close-btn-img" src="../../images/close.png" mode="aspectFit"></image>
+    <button class="btn-txt">关闭</button>
+  </view>
+</view>

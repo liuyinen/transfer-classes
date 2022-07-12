@@ -1,0 +1,167 @@
+<!--pages/adjustCourseDetail/adjustCourseDetail.wxml-->
+<form bindsubmit="confirmAdjustCourse">
+  <view class="main">
+    <view class="top-title">
+      {{recordData.status==0?'未调':(recordData.status==1?'已调':(recordData.status==2?'拒调':'调课'))}}记录详情</view>
+    <view class="form-content">
+      <view class="form-item">
+        <view class="top">1.时间</view>
+        <view class="select">
+          <view class="select-right">
+            <image class="select-right-img" src="../../images/select.png" mode="aspectFit"></image>
+          </view>
+          <text>{{recordData.date}}</text>
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="top">2.节次</view>
+        <view class="select">
+          <view class="select-right">
+            <image class="select-right-img" src="../../images/select.png" mode="aspectFit"></image>
+          </view>
+          <text>{{sectionArray[recordData.section]}}</text>
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="top">3.教师姓名</view>
+        <input class="bottom-input" name="username" placeholder-style="color:#696969;"
+          placeholder="{{recordData.username}}" disabled="disabled" />
+      </view>
+      <view class="form-item">
+        <view class="top">4.调课原因</view>
+        <textarea class="bottom-textarea" name="reason" placeholder-style="color:#696969;font-weight:normal;"
+          style="height: 3em" disabled="disabled" placeholder="{{recordData.reason}}" />
+      </view>
+      <view class="form-item">
+        <view class="top">5.调课班级</view>
+        <view class="select">
+          <view class="select-right">
+            <image class="select-right-img" src="../../images/select.png" mode="aspectFit"></image>
+          </view>
+          <text>{{recordData.grade}}{{recordData.gclass}}班</text>
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="top">6.调课备注</view>
+        <textarea class="bottom-textarea" name="remarks" placeholder-style="color:#696969;font-weight:normal;"
+          style="height: 3em" placeholder="{{recordData.remarks}}" disabled="disabled" />
+      </view>
+      <block wx:if="{{recordData.status == 1 || recordData.status == 2}}">
+        <view class="form-item">
+          <view class="top">7.是否同意调课</view>
+          <view class="select">
+            <view class="select-right">
+              <image class="select-right-img" src="../../images/select.png" mode="aspectFit"></image>
+            </view>
+            <text>{{recordData.status == 1 ? '同意' : '拒绝'}}</text>
+          </view>
+        </view>
+        <view class="form-item" wx:if="{{recordData.status == 2}}">
+          <view class="top">8.拒绝调课原因</view>
+          <textarea class="bottom-textarea" name="refuse" placeholder-style="color:#696969;font-weight:normal;"
+            style="height: 3em" placeholder="{{recordData.refuse}}" disabled="disabled" />
+        </view>
+        <view class="form-item" wx:if="{{recordData.status == 1}}">
+          <view class="top">8.安排任课教师</view>
+          <input class="bottom-input" name="adjust_teacher" placeholder-style="color:#696969;"
+            placeholder="{{recordData.adjust_teacher}}" disabled="disabled" />
+        </view>
+        <view class="form-item">
+          <view class="top">9.调整时间</view>
+          <view class="select">
+            <view class="select-right">
+              <image class="select-right-img" src="../../images/select.png" mode="aspectFit"></image>
+            </view>
+            <text>{{recordData.adjust_time}}</text>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="top">10.调整节次</view>
+          <view class="select">
+            <view class="select-right">
+              <image class="select-right-img" src="../../images/select.png" mode="aspectFit"></image>
+            </view>
+            <text>{{sectionArray[recordData.adjust_section]}}</text>
+          </view>
+        </view>
+        <view class="form-item" wx:if="{{recordData.status == 1}}">
+          <view class="top">11.调课属性</view>
+          <view class="select">
+            <view class="select-right">
+              <image class="select-right-img" src="../../images/select.png" mode="aspectFit"></image>
+            </view>
+            <text>{{recordData.attribute == 1 ? '自习' : '上课'}}</text>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="top">{{recordData.status == 1 ? '12' : '9'}}.备注</view>
+          <textarea class="bottom-textarea" name="resRemarks" placeholder-style="color:#696969;font-weight:normal;"
+            style="height: 3em" placeholder="{{recordData.res_remarks}}" disabled="disabled" />
+        </view>
+      </block>
+      <block wx:if="{{ (role_id == 1 ||  role_id == 2) && recordData.status == 0 }}">
+        <view class="form-item">
+          <view class="top">7.是否同意调课</view>
+          <radio-group class="radio-group" name="status" bindchange='radiochange'>
+            <radio class="radio" wx:for-items="{{statusItems}}" wx:key="name" value="{{item.name}}"
+              checked="{{item.checked}}">
+              <text>{{item.value}}</text>
+            </radio>
+          </radio-group>
+        </view>
+        <block>
+          <view wx:if="{{statusRadio == '同意'}}">
+            <view class="form-item">
+              <view class="top"><text class="star" decode="true">*&nbsp;</text>8.安排任课教师</view>
+              <input class="bottom-input" name="username" placeholder-style="color:#696969;"
+                placeholder="请输入被调课教师的名字" />
+            </view>
+            <view class="form-item">
+              <view class="top">9.调整时间</view>
+              <pickerYMDHM class="dateTime" name="adjustTime" bind:onPickerChange="onPickerChange3"
+                date="{{endedTime}}">
+              </pickerYMDHM>
+            </view>
+            <view class="form-item">
+              <view class="top">10.调整节次</view>
+              <picker bindchange="bindPickerChange" name="section" value="{{index}}" range="{{sectionArray}}">
+                <view class="picker">
+                  当前选择：{{sectionArray[index]}}
+                </view>
+              </picker>
+            </view>
+            <view class="form-item">
+              <view class="top">11.调课属性</view>
+              <radio-group class="radio-group" name="attribute">
+                <radio class="radio" wx:for-items="{{attributeItems}}" wx:key="name" value="{{item.name}}"
+                  checked="{{item.checked}}">
+                  <text>{{item.value}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </view>
+          <view class="form-item" wx:if="{{statusRadio == '拒绝'}}">
+            <view class="top"><text class="star" decode="true">*&nbsp;</text>8.拒绝调课原因</view>
+            <textarea class="bottom-textarea" name="refuse" placeholder-style="color:#696969;font-weight:normal;"
+              style="height: 3em" placeholder="请输入拒绝调课原因" />
+          </view>
+        </block>
+        <view class="form-item">
+          <view class="top">{{statusRadio == '同意' ? '12' : '9'}}.备注</view>
+          <textarea class="bottom-textarea" name="resRemarks" placeholder-style="color:#696969;font-weight:normal;"
+            style="height: 3em" placeholder="" />
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="close-page">
+    <view class="btn close-btn" bindtap="navigateBack">
+      <image class="close-btn-img" src="../../images/close.png" mode="aspectFit"></image>
+      <button class="btn-txt">关闭</button>
+    </view>
+    <view class="btn confirm-btn" wx:if="{{ (role_id == 1 ||  role_id == 2) && recordData.status == 0 }}">
+      <image class="close-btn-img" src="../../images/confirm.png" mode="aspectFit"></image>
+      <button class="btn-txt" form-type="submit">确认</button>
+    </view>
+  </view>
+</form>

@@ -1,0 +1,61 @@
+<!--pages/adjustCourseRecords/adjustCourseRecords.wxml-->
+<view class="page-title">
+  <view class="return">
+    <image class="return-img" src="../../images/mine/return.png" mode="aspectFit" bindtap="navigateBack"></image>
+  </view>
+  <view>{{type==0?'调课申请未调':(type==1?'调课申请已调':(type==2?'调课申请拒调':'全部调课申请'))}}记录</view>
+  <view class="header">
+    <view class="operation" data-status='1' bindtap="changeStatus">
+      <image class="operation-img" src="../../images/mine/operation.png" mode="aspectFit"></image>
+    </view>
+    <block wx:if="{{isActive==true}}">
+      <view class="operation-option">
+        <view class="opt" bindtap="viewDetails">
+          <image class="operation-img" src="../../images/mine/view_detail.png" mode="aspectFit"></image>
+          <text>查看详情</text>
+        </view>
+        <block wx:if="{{ type == 0 }}">
+          <view class="opt" bindtap="deleteRecords">
+            <image class="operation-img" src="../../images/mine/delete.png" mode="aspectFit"></image>
+            <text>删除记录</text>
+          </view>
+        </block>
+        <block wx:if="{{ roleid == 1 }}">
+          <view class="opt" bindtap="exportRecords">
+            <image class="operation-img" src="../../images/mine/export.png" mode="aspectFit"></image>
+            <text>导出记录</text>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="tips" wx:if="{{flag == 0}}">暂无记录！</view>
+<view class="table" wx:elif="{{flag != 0}}">
+  <view class="tr bg-w">
+    <view class="th checkbox">
+      <checkbox bindtap="selectall" class="checkbox-attr" />
+    </view>
+    <view class="th records-id">序号</view>
+    <view class="th records-time {{type==3?'records-time-short':'records-time-long'}}">调课时间</view>
+    <view class="th records-per">申请人</view>
+    <view class="th records-status" wx:if="{{type==3}}">状态</view>
+  </view>
+  <checkbox-group bindchange="checkboxChange">
+    <view class="tr bg-g" wx:for="{{recordLists}}" wx:key="id" wx:for-index="index">
+      <view class="td checkbox">
+        <checkbox class="checkbox-attr" value="{{item.id}}" checked="{{item.checked}}" />
+      </view>
+      <view class="td records-id">{{index+1}}</view>
+      <view class="td records-time {{type==3?'records-time-short':'records-time-long'}}">{{item.date}}</view>
+      <view class="td records-per">{{item.username}}</view>
+      <block wx:if="{{type==3}}">
+        <view class="td records-status">
+          <view class="cer not-cer" wx:if="{{item.status == 0}}">未处理</view>
+          <view class="cer success-cer" wx:elif="{{item.status == 1}}">已同意</view>
+          <view class="cer fail-cer" wx:elif="{{item.status == 2}}">已拒绝</view>
+        </view>
+      </block>
+    </view>
+  </checkbox-group>
+</view>

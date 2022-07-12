@@ -1,0 +1,63 @@
+<!--pages/mine/mine.wxml-->
+<block wx:if="{{ globalData.userInfoStatus == 1 }}">
+  <view class="login-box">
+    <image class="logo" src="/images/wx.jpg" mode="widthFix"></image>
+    <view class="line"></view>
+    <view class="title">申请获取以下权限</view>
+    <view class="profile">获得你的公开信息(昵称，头像等)</view>
+    <view class="btn">
+      <button class="login-btn" bindtap="newLogin">微信一键登录</button>
+    </view>
+  </view>
+</block>
+<block wx:if="{{ globalData.userInfoStatus == 2 }}">
+  <view class="header-box">
+    <view class="header-box-left">
+      <image class="avatar" src="{{ globalData.avatar }}" mode="aspectFill"></image>
+      <view class="userinfo">
+        <text class="nick">{{ globalData.nickname }}</text>
+        <view class="cer .not-cer" wx:if="{{globalData.identify == 0}}">未认证</view>
+        <view class="cer .success-cer" wx:elif="{{globalData.identify == 1}}">认证成功</view>
+        <view wx:if="{{globalData.identify == 2}}">
+          <view class="cer .fail-cer">认证失败</view>
+          <view class="refuse-reason">{{globalData.refuseReason}}，请重新完善信息。</view>
+        </view>
+      </view>
+    </view>
+    <view class="header-box-right" bindtap="newLogin">更新信息</view>
+  </view>
+  <view class="adjust-class">
+    <view class="adjust-class-top">
+      <text class="adjust-class-top-left">调课记录</text>
+      <text class="adjust-class-top-right" bindtap="goAdjustCourse" data-type="3">全部></text>
+    </view>
+    <view class="adjust-class-content">
+      <view class="adjust-class-content-item" bindtap="goAdjustCourse" data-type="0">
+        <image class="adjust-class-content-item-img" src="/images/mine/not-done.png" mode="widthFix"></image>
+        <text>未调</text>
+      </view>
+      <view class="adjust-class-content-item" bindtap="goAdjustCourse" data-type="1">
+        <image class="adjust-class-content-item-img" src="/images/mine/success.png" mode="widthFix"></image>
+        <text>已调</text>
+      </view>
+      <view class="adjust-class-content-item" bindtap="goAdjustCourse" data-type="2">
+        <image class="adjust-class-content-item-img" src="/images/mine/fail.png" mode="widthFix"></image>
+        <text>拒调</text>
+      </view>
+    </view>
+  </view>
+  <view class="list-wrapper">
+    <block wx:for="{{menuitems}}" wx:key="item">
+      <view wx:if="{{item.flag == 1 || (item.flag == 2 && globalData.roleid == 1)}}">
+        <navigator url="{{item.url}}" class="list-item" hover-class="list-item_active">
+          <view class='item'>
+            <image class="item-image" src="{{ item.img_url }}" mode="aspectFit"></image>
+            <text class="item-text">{{item.text}}</text>
+            <text class='item-array'>></text>
+          </view>
+          <view class="div-line"></view>
+        </navigator>
+      </view>
+    </block>
+  </view>
+</block>

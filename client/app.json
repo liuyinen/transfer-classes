@@ -1,0 +1,38 @@
+{
+  "pages":[
+    "pages/adjustCourse/adjustCourse",
+    "pages/adjustCourseDetail/adjustCourseDetail",
+    "pages/adjustCourseRecords/adjustCourseRecords",
+    "pages/mine/mine",
+    "pages/perfectInfo/perfectInfo",
+    "pages/userManage/userManage",
+    "pages/userManageDetail/userManageDetail",
+    "pages/newCourse/newCourse",
+    "pages/newCourseDetail/newCourseDetail",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/adjustCourse/adjustCourse",
+        "iconPath": "images/bottom-nav/adjust_course.png",
+        "selectedIconPath": "images/bottom-nav/adjust_course_select.png",
+        "text": "调课"
+      },{
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/bottom-nav/mine.png",
+        "selectedIconPath": "images/bottom-nav/mine_select.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "entryPagePath": "pages/adjustCourse/adjustCourse",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

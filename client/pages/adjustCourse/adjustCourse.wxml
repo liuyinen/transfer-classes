@@ -1,0 +1,48 @@
+<!--pages/adjustCourse/adjustCourse.wxml-->
+<form bindsubmit="formSubmit" class="formSubmit">
+  <view class="main">
+    <view class="top-title">调课登记表</view>
+    <view class="form-content">
+      <view class="form-item">
+        <view class="top"><text class="star" decode="true">*&nbsp;</text>1.时间</view>
+        <pickerYMDHM class="dateTime" name="dateTime" bind:onPickerChange="onPickerChange3" date="{{endedTime}}">
+        </pickerYMDHM>
+      </view>
+      <view class="form-item">
+        <view class="top"><text class="star" decode="true">*&nbsp;</text>2.节次</view>
+        <picker bindchange="bindPickerChange" name="section" value="{{index}}" range="{{sectionArray}}">
+          <view class="picker">
+            当前选择：{{sectionArray[index]}}
+          </view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <view class="top"><text class="star" decode="true">*&nbsp;</text>3.教师姓名</view>
+        <input class="bottom-input" name="username" placeholder-style="color:#e3e3e3;" placeholder="请输入姓名"
+          value='{{form_info}}' />
+      </view>
+      <view class="form-item">
+        <view class="top"><text class="star" decode="true">*&nbsp;</text>4.调课原因</view>
+        <textarea class="bottom-textarea" name="reason" placeholder-style="color:#696969;font-weight:normal;"
+          style="height: 3em" placeholder="请输入调课原因" value='{{form_info}}' />
+      </view>
+      <view class="form-item">
+        <view class="top"><text class="star" decode="true">*&nbsp;</text>5.调课班级</view>
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{gradeClass}}" range="{{multiArray}}"
+          name="gradeClass">
+          <view class="picker">
+            当前选择：{{gradeClass.grade}}{{gradeClass.gclass}}
+          </view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <view class="top"><text decode="true">&nbsp;&nbsp;</text>6.备注</view>
+        <textarea class="bottom-textarea" name="remarks" placeholder-style="color:#696969;font-weight:normal;"
+          style="height: 3em" placeholder="" value='{{form_info}}' />
+      </view>
+    </view>
+  </view>
+  <view class="bottom">
+    <button class="save-btn" form-type="submit">保存</button>
+  </view>
+</form>

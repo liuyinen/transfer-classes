@@ -1,0 +1,46 @@
+<!--pages/userManage/userManage.wxml-->
+<view class="page-title">
+  <view class="return">
+    <image class="return-img" src="../../images/mine/return.png" mode="aspectFit" bindtap="navigateBack"></image>
+  </view>
+  <view>教师认证</view>
+  <view class="header">
+    <view class="operation" data-status='1' bindtap="changeStatus">
+      <image class="operation-img" src="../../images/mine/operation.png" mode="aspectFit"></image>
+    </view>
+    <block wx:if="{{isActive==true}}">
+      <view class="operation-option">
+        <view class="opt" bindtap="viewDetails">
+          <image class="operation-img" src="../../images/mine/view_detail.png" mode="aspectFit"></image>
+          <text>查看详情</text>
+        </view>     
+      </view>
+    </block>
+  </view>
+</view>
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th checkbox">
+      <checkbox bindtap="selectall" class="checkbox-attr" />
+    </view>
+    <view class="th records-id">序号</view>
+    <view class="th records-per">申请人</view>
+    <view class="th records-time">申请时间</view>
+    <view class="th records-identify">是否认证</view>
+  </view>
+  <checkbox-group bindchange="checkboxChange">
+    <view class="tr bg-g" wx:for="{{userLists}}" wx:key="id" wx:for-index="index">
+      <view class="td checkbox">
+        <checkbox class="checkbox-attr" value="{{item.id}}" checked="{{item.checked}}" />
+      </view>
+      <view class="td records-id">{{index+1}}</view>
+      <view class="td records-per">{{item.username}}</view>
+      <view class="td records-time">{{item.create_time}}</view>
+      <view class="td records-identify">
+        <view class="cer not-cer" wx:if="{{item.identify == 0}}">未认证</view>
+        <view class="cer success-cer" wx:if="{{item.identify == 1}}">已认证</view>
+        <view class="cer fail-cer" wx:if="{{item.identify == 2}}">认证失败</view>
+      </view>
+    </view>
+  </checkbox-group>
+</view>

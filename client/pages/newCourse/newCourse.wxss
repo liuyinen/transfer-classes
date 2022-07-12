@@ -1,0 +1,93 @@
+/* pages/newCourse/newCourse.wxss */
+.tips {
+  color: #e3e3e3;
+  font-size: 40rpx;
+  margin: 50% auto;
+  width: 5.5rem;
+}
+
+.table {
+  border: 0px solid darkgray;
+}
+
+.tr {
+  display: flex;
+  width: 100%;
+  height: 2.2rem;
+  align-items: center;
+}
+
+.bg-g {
+  color: #333;
+  border-bottom: 0.1rem dashed #dadbda;
+}
+
+.td {
+  line-height: 2.2rem;
+  display: table-cell;
+  vertical-align: middle;
+  border-left: 0.1rem dashed #dadbda;
+  font-size: 14px;
+  justify-content: center;
+  text-align: center;
+}
+
+.bg-w {
+  background: #f3f3f1;
+  border-bottom: 0.1rem dashed #dadbda;
+}
+
+.th {
+  font-size: 14px;
+  justify-content: center;
+  color: #078646;
+  display: flex;
+  height: 2.2rem;
+  align-items: center;
+  border-left: 0.1rem dashed #dadbda;
+}
+
+.records-id {
+  width: 15%;
+}
+
+.records-time {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50%;
+
+}
+
+.records-class {
+  width: 20%;
+}
+
+.cer {
+  width: 80%;
+  height: 1.5rem;
+  border-radius: 0.5rem;
+  line-height: 1.5rem;
+  margin: auto;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.records-opt {
+  width: 20%;
+}
+
+.cer {
+  width: 80%;
+  height: 1.5rem;
+  border-radius: 0.5rem;
+  line-height: 1.5rem;
+  margin: auto;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.success-cer {
+  background: #09c063;
+}

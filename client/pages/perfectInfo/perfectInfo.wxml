@@ -1,0 +1,32 @@
+<!--pages/perfectInfo/perfectInfo.wxml-->
+<form bindsubmit="formSubmit" class="perfect-info">
+  <view class="form-item">
+    <view class="item-lable"><text class="star" decode="true">*&nbsp;</text>教师工号</view>
+    <input class="item-text" name="jobNumber" placeholder-style="color:#e3e3e3;" placeholder="请输入教师工号"
+      value="{{job_number}}" />
+  </view>
+  <view class="form-item">
+    <view class="item-lable"><text class="star" decode="true">*&nbsp;</text>教师姓名</view>
+    <input class="item-text" name="username" placeholder-style="color:#e3e3e3;" placeholder="请输入教师姓名"
+      value="{{username}}" />
+  </view>
+  <view class="div-line"></view>
+  <view class="form-item">
+    <picker bindchange="pickChange" value="{{index}}" name="gender" range="{{array}}" class="picker">
+      <text class="item-lable"><text class="star" decode="true">*&nbsp;</text>性别</text>
+      <text class="item-text">{{array[index]}}></text>
+    </picker>
+  </view>
+  <view class="div-line"></view>
+  <view class="form-item">
+    <view class="item-lable"><text class="star" decode="true">*&nbsp;</text>绑定手机</view>
+    <button wx:if="{{ mobileStatus == 1 }}" class="item-text item-mobile" open-type="getPhoneNumber"
+      bindgetphonenumber="bindgetphonenumber">获取手机号</button>
+    <input wx:if="{{ mobileStatus == 2 }}" class="item-text" name="telephone" placeholder-style="color:#e3e3e3;"
+      placeholder="请输入电话号码" value="{{telephone}}" />
+  </view>
+  <view class="div-line"></view>
+  <view class="btn">
+    <button class="save-btn" form-type="submit" role="button">保存</button>
+  </view>
+</form>

@@ -1,0 +1,177 @@
+view {
+  font-size: 32rpx;
+}
+
+.login-box .logo {
+  width: 200rpx;
+  margin: 64rpx 275rpx;
+}
+
+.login-box .line {
+  height: 2rpx;
+  width: 686rpx;
+  background-color: #ebedf0;
+  margin: 0 32rpx;
+}
+
+.login-box .title {
+  margin: 64rpx 0 0 32rpx;
+  color: #333;
+}
+
+.login-box .profile {
+  margin: 32rpx 0 0 32rpx;
+  color: #999;
+}
+
+.login-box .btn {
+  margin: 88rpx 32rpx;
+}
+
+.login-box .btn .login-btn {
+  width: 100%;
+  border-radius: 6rpx;
+  color: #ffffff;
+  background-color: #09c063;
+  font-size: 32rpx;
+  font-weight: normal;
+}
+
+.header-box {
+  padding: 1rem 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #333;
+}
+
+.header-box-left {
+  width: 72%;
+  display: flex;
+  align-items: center;
+}
+
+.header-box-right {
+  border-radius: 0.8rem;
+  font-weight: normal;
+  font-size: 32rpx;
+  padding: 0.5rem;
+  border: 0.1rem solid #dadbda;
+  float: right;
+}
+
+
+.header-box .avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 5rem;
+  border: 0.1rem dashed #09c063;
+}
+
+.header-box .btn {
+  margin-left: 32rpx;
+}
+
+.header-box .r {
+  margin-left: 32rpx;
+}
+
+.list-wrapper {
+  margin-top: 0.8rem;
+}
+
+.list-wrapper .list-item {
+  border-bottom: 0.08rem solid #dadbda;
+}
+
+.list-wrapper .list-item .item .item-image {
+  margin-right: 0.3rem;
+  width: 1.3rem;
+  max-height: 1.8rem;
+}
+
+.list-wrapper .list-item .item {
+  display: flex;
+  padding: 0.5rem 1rem;
+}
+
+.list-wrapper .list-item .item .item-text {
+  line-height: 1.8rem;
+  flex: 1;
+}
+
+.adjust-class {
+  width: 85%;
+  height: 5rem;
+  margin: auto;
+  padding: 0.5rem 0.8rem;
+  border: 0.1rem solid #dadbda;
+  border-radius: 1rem;
+}
+
+.adjust-class-top-left {
+  display: inline-block;
+}
+
+.adjust-class-top-right {
+  float: right;
+  color: rgb(128, 128, 128);
+}
+
+.adjust-class-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+}
+
+.adjust-class-content-item {
+  display: flex;
+  flex-flow: column;
+}
+
+.adjust-class-content-item-img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.userinfo {
+  margin-left: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.cer {
+  width: 3.2rem;
+  height: 1.5rem;
+  border-radius: 0.5rem;
+  line-height: 1.5rem;
+  margin-top: 0.6rem;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.not-cer {
+  background: #1296db;
+}
+
+.success-cer {
+  background: #09c063;
+}
+
+.fail-cer {
+  background: #e15a3d;
+}
+
+.refuse-reason {
+  background: #f6f3c4;
+  font-size: 28rpx;
+  padding: 0.1rem 0.2rem;
+  margin-top: 0.3rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
